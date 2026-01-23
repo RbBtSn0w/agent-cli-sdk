@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, AsyncGenerator
+from typing import Any, List, AsyncGenerator
 from .types import Message, ToolDefinition, StreamEvent
 
 class AgentDriver(ABC):

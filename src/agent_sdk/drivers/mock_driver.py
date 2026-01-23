@@ -1,5 +1,5 @@
 import asyncio
-from typing import List, AsyncGenerator
+from typing import Any, List, AsyncGenerator
 from ..core.driver import AgentDriver
 from ..core.types import Message, ToolDefinition, StreamEvent, AgentEvent, Role
 
