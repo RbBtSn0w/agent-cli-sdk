@@ -35,3 +35,6 @@ class AgentEvent(Enum):
 class StreamEvent:
     type: AgentEvent
     payload: Any
+
+# Backward-compatible alias
+EventType = AgentEvent
