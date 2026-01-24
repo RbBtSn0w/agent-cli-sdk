@@ -63,7 +63,7 @@ ignore = []
 
 [tool.vulture]
 min_confidence = 80
-paths = ["src", "tests"]
+paths = ["src"]
 sort_by_size = true
 verbose = false
 
