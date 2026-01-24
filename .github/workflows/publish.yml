@@ -11,10 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Check for PyPI Token Secret
+      run: |
+        if [ -z "${{ secrets.PYPI_API_TOKEN }}" ]; then
+          echo "::error::PYPI_API_TOKEN secret is NOT set or empty!"
+        else
+          echo "PYPI_API_TOKEN secret is detected (masked)."
+        fi
 
     - name: Set up Python
       uses: actions/setup-python@v5
