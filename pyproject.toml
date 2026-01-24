@@ -7,7 +7,7 @@ packages = ["src/agent_sdk"]
 
 [project]
 name = "agent-cli-sdk"
-version = "0.1.0"
+version = "0.0.1a1"
 description = "Universal SDK for interacting with AI Agent CLIs (Gemini, Copilot, etc.)"
 readme = "README.md"
 authors = [

@@ -2,7 +2,7 @@
 Agent CLI SDK - Universal interface for AI Agent CLIs (Copilot, Gemini, etc.)
 """
 
-__version__ = "0.1.0"
+__version__ = "0.0.1a1"
 
 from agent_sdk.core.agent import UniversalAgent
 from agent_sdk.core.driver import AgentDriver
