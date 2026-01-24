@@ -1,12 +1,14 @@
 from dataclasses import dataclass, field
-from typing import List, Optional, Dict, Any, Union
 from enum import Enum
+from typing import Any, Dict, List, Optional
+
 
 class Role(Enum):
     SYSTEM = "system"
     USER = "user"
     ASSISTANT = "assistant"
     TOOL = "tool"
+
 
 @dataclass
 class Message:
@@ -15,12 +17,14 @@ class Message:
     name: Optional[str] = None
     tool_calls: Optional[List[Dict[str, Any]]] = None
 
+
 @dataclass
 class ToolDefinition:
     name: str
     description: str
     parameters: Dict[str, Any]  # JSON Schema
     function: callable = field(repr=False)
+
 
 class AgentEvent(Enum):
     START = "start"
@@ -31,10 +35,12 @@ class AgentEvent(Enum):
     DONE = "done"
     ERROR = "error"
 
+
 @dataclass
 class StreamEvent:
     type: AgentEvent
     payload: Any
+
 
 # Backward-compatible alias
 EventType = AgentEvent

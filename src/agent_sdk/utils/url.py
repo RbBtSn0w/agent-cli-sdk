@@ -19,8 +19,8 @@ def parse_cli_url(url: str) -> Tuple[str, int]:
     # If scheme is missing but it looks like host:port (and not just port)
     if not parsed.scheme and ":" in url:
         # urlparse might handle "localhost:8080" as path if no scheme
-        # Let's try prepending a well-known scheme for proper parsing
-        parsed = urlparse("http://" + url)
+        # Let's try prepending // to make it a netloc
+        parsed = urlparse("//" + url)
 
     if not parsed.hostname:
         # Fallback if parsing failed or just a port number string that wasn't digit

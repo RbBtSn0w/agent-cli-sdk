@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
-from typing import Any, List, AsyncGenerator
-from .types import Message, ToolDefinition, StreamEvent
+from typing import Any, AsyncGenerator, List
+
+from .types import Message, StreamEvent, ToolDefinition
+
 
 class AgentDriver(ABC):
     """
@@ -38,6 +40,7 @@ class AgentDriver(ABC):
     @abstractmethod
     async def send_tool_result(self, call_id: str, result: Any) -> None:
         """
-        Send the result of a tool execution back to the agent (required by some protocols like JSON-RPC).
+        Send the result of a tool execution back to the agent
+        (required by some protocols like JSON-RPC).
         """
         pass
