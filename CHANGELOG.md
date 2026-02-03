@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.0 (2026-02-03)
+
+### Features
+
+- Implement semantic-release with custom versioning logic
+  ([`b69088f`](https://github.com/RbBtSn0w/agent-cli-sdk/commit/b69088facdd9823cd06e14e4b48c6172f0002036))
+
+
 ## v0.1.0 (2026-02-03)
 
 ### Chores
