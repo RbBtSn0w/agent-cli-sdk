@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -6,8 +6,12 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -38,3 +42,30 @@ jobs:
       with:
         name: coverage-${{ matrix.python-version }}
         path: ./.coverage*
+
+  release:
+    name: Release
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency: release
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python Semantic Release
+        id: release
+        uses: python-semantic-release/python-semantic-release@v9.15.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        if: steps.release.outputs.released == 'true'
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
