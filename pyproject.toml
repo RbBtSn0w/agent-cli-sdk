@@ -72,3 +72,23 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = "-v"
 asyncio_mode = "auto"
+
+[tool.semantic_release]
+version_variables = [
+    "src/agent_sdk/__init__.py:__version__",
+]
+version_toml = [
+    "pyproject.toml:project.version",
+]
+upload_to_pypi = false
+upload_to_release = true
+build_command = "python -m pip install build && python -m build"
+
+[tool.semantic_release.branches.main]
+match = "(main|master)"
+prerelease = false
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = ["build", "chore", "ci", "docs", "feat", "fix", "perf", "style", "refactor", "test"]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf"]
