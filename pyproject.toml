@@ -80,10 +80,13 @@ version_variables = [
 version_toml = [
     "pyproject.toml:project.version",
 ]
-branch = "main"
 upload_to_pypi = false
 upload_to_release = true
 build_command = "python -m pip install build && python -m build"
+
+[tool.semantic_release.branches.main]
+match = "(main|master)"
+prerelease = false
 
 [tool.semantic_release.commit_parser_options]
 allowed_tags = ["build", "chore", "ci", "docs", "feat", "fix", "perf", "style", "refactor", "test"]
